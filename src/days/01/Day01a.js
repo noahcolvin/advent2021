@@ -5,7 +5,7 @@ const Day01a = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const rawData = await fetch('/Input/Input01a.txt')
+      const rawData = await fetch('/Input/Input01.txt')
       const textData = await rawData.text()
       const splitData = textData.split('\n')
       return splitData
@@ -28,7 +28,7 @@ const Day01a = () => {
     run()
       .then(res => {
         setResult(res)
-        console.log('done')
+        console.log('done 01a')
       })
       .catch(err => console.log(err.message))
   }, [])
