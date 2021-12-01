@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const Day01a = () => {
+const Day01b = () => {
   const [result, setResult] = useState()
 
   useEffect(() => {
@@ -17,10 +17,17 @@ const Day01a = () => {
       let last = 0
       let count = 0
       for (let x = 0; x < data.length; x++) {
-        const value = parseInt(data[x])
-        if (x > 0 && value > last)
+        const value1 = parseInt(data[x])
+        const value2 = parseInt(data[x + 1])
+        const value3 = parseInt(data[x + 2])
+        const sum = value1 + value2 + value3
+
+        if (isNaN(sum))
+          break
+
+        if (x > 0 && sum > last)
           count++
-        last = value
+        last = sum
       }
       return count
     }
@@ -34,9 +41,9 @@ const Day01a = () => {
   }, [])
 
   return <div>
-    <h1>Day 01a</h1>
+    <h1>Day 01b</h1>
     <p>{result}</p>
   </div>
 }
 
-export default Day01a
+export default Day01b
