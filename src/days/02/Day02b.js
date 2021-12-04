@@ -33,6 +33,9 @@ const Day02b = () => {
             break
           case 'down':
             aim += value
+            break
+          default:
+            break
         }
 
       }

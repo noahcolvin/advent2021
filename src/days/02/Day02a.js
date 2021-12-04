@@ -31,6 +31,9 @@ const Day02a = () => {
             break
           case 'down':
             depth += value
+            break
+          default:
+            break
         }
 
       }
