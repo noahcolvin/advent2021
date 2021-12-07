@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react"
+import useFile from '../../hooks/use-file'
 
 const Day01a = () => {
   const [result, setResult] = useState()
+  const file = useFile()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const rawData = await fetch('/Input/Input01.txt')
-      const textData = await rawData.text()
-      const splitData = textData.split('\n')
-      return splitData
-    }
-
     const run = async () => {
-      const data = await fetchData()
+      const data = await file.fetchDataForDay('01')
 
       let last = 0
       let count = 0
@@ -31,7 +26,7 @@ const Day01a = () => {
         console.log('done 01a')
       })
       .catch(err => console.log(err.message))
-  }, [])
+  }, [file])
 
   return <div>
     <h1>Day 01a</h1>

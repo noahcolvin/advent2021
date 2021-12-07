@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react"
+import useFile from '../../hooks/use-file'
 
 const Day06b = () => {
   const [result, setResult] = useState()
+  const file = useFile()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const rawData = await fetch('/Input/Input06.txt')
-      const textData = await rawData.text()
-      const splitData = textData.split('\n')
-      return splitData
-    }
-
     const distribute = fish => {
       const fishies = new Map()
 
@@ -27,7 +22,7 @@ const Day06b = () => {
     }
 
     const run = async () => {
-      const data = await fetchData()
+      const data = await file.fetchDataForDay('06')
       const fish = data[0].split(',').map(f => parseInt(f))
       const days = 256
       const counts = distribute(fish)
@@ -57,7 +52,7 @@ const Day06b = () => {
         console.log('done 06b')
       })
       .catch(err => console.log(err.message))
-  }, [])
+  }, [file])
 
   return <div>
     <h1>Day 06b</h1>

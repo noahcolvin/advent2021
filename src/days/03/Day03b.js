@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react"
+import useFile from '../../hooks/use-file'
 
 const Day03b = () => {
   const [result, setResult] = useState()
+  const file = useFile()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const rawData = await fetch('/Input/Input03.txt')
-      const textData = await rawData.text()
-      const splitData = textData.split('\n')
-      return splitData
-    }
-
     const run = async () => {
-      const data = await fetchData()
+      const data = await file.fetchDataForDay('03')
 
       let o2 = [...data]
       let co2 = [...data]
@@ -42,7 +37,7 @@ const Day03b = () => {
         console.log('done 03b')
       })
       .catch(err => console.log(err.message))
-  }, [])
+  }, [file])
 
   return <div>
     <h1>Day 03b</h1>

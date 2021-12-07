@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react"
+import useFile from '../../hooks/use-file'
 
 const Day05b = () => {
   const [result, setResult] = useState()
+  const file = useFile()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const rawData = await fetch('/Input/Input05.txt')
-      const textData = await rawData.text()
-      const splitData = textData.split('\n')
-      return splitData
-    }
-
     const findStraightLines = (lines) => {
       const verticalLines = []
       const horizontalLines = []
@@ -33,7 +28,7 @@ const Day05b = () => {
     }
 
     const run = async () => {
-      const data = await fetchData()
+      const data = await file.fetchDataForDay('05')
       const { verticalLines, horizontalLines, diagonalLines } = findStraightLines(data)
       const plottedPoints = new Map()
 
@@ -100,7 +95,7 @@ const Day05b = () => {
         console.log('done 05b')
       })
       .catch(err => console.log(err.message))
-  }, [])
+  }, [file])
 
   return <div>
     <h1>Day 05b</h1>

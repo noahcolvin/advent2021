@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react"
+import useFile from '../../hooks/use-file'
 
 const Day04a = () => {
   const [result, setResult] = useState()
+  const file = useFile()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const rawData = await fetch('/Input/Input04.txt')
-      const textData = await rawData.text()
-      const splitData = textData.split('\n')
-      return splitData
-    }
-
     const getBoards = data => {
       const boards = []
 
@@ -49,7 +44,7 @@ const Day04a = () => {
       }
 
       if (found > 0)
-        console.log('found bad');
+        console.log('found bad')
 
       for (let y = 0; y < 5; y++) { //each horizontal line
         for (let x = 0; x < 5; x++) { //each number in line
@@ -82,7 +77,7 @@ const Day04a = () => {
     }
 
     const run = async () => {
-      const data = await fetchData()
+      const data = await file.fetchDataForDay('04')
       const drawn = data[0].split(',')
       const boards = getBoards(data)
 
@@ -106,7 +101,7 @@ const Day04a = () => {
         console.log('done 04a')
       })
       .catch(err => console.log(err.message))
-  }, [])
+  }, [file])
 
   return <div>
     <h1>Day 04a</h1>
