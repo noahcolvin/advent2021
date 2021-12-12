@@ -22,6 +22,8 @@ import Day10a from './days/10/Day10a'
 import Day10b from './days/10/Day10b'
 import Day11a from './days/11/Day11a'
 import Day11b from './days/11/Day11b'
+import Day12a from './days/12/Day12a'
+import Day12b from './days/12/Day12b'
 
 function App() {
   return (
@@ -47,9 +49,11 @@ function App() {
         <Day09b />
         <Day10a />
         <Day10b />
+        <Day11a />
+        <Day11b />
       </PreviousDays>
-      <Day11a />
-      <Day11b />
+      <Day12a />
+      <Day12b />
     </div>
   )
 }
